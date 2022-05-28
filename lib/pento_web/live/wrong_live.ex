@@ -1,8 +1,19 @@
 defmodule PentoWeb.WrongLive do
   use Phoenix.LiveView, layout: {PentoWeb.LayoutView, "live.html"}
+  alias Pento.Accounts
 
-  def mount(_params, _session, socket) do
-    {:ok, assign(socket, score: 0, message: "Make a guess:")}
+  def mount(_params, session, socket) do
+    user = Accounts.get_user_by_session_token(session["user_token"])
+    {
+      :ok,
+      assign(
+        socket,
+        score: 0,
+        message: "Make a guess:",
+        session_id: session["live_socket_id"],
+        current_user: Pento.Accounts.get_user_by_session_token(session["user_token"])
+      )
+    }
   end
 
   def render(assigns) do

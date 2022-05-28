@@ -74,7 +74,10 @@ defmodule PentoWeb.Router do
 
   scope "/", PentoWeb do
     pipe_through [:browser, :require_authenticated_user]
-    live "/guess", WrongLive
+
+    live_session :default, on_mount: PentoWeb.UserAuthLive do
+      live "/guess", WrongLive
+    end
 
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
@@ -90,4 +93,6 @@ defmodule PentoWeb.Router do
     get "/users/confirm/:token", UserConfirmationController, :edit
     post "/users/confirm/:token", UserConfirmationController, :update
   end
+
+
 end
