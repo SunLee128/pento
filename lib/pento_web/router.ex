@@ -85,7 +85,6 @@ defmodule PentoWeb.Router do
 
       live "/products/:id", ProductLive.Show, :show
       live "/products/:id/show/edit", ProductLive.Show, :edit
-
     end
 
     get "/users/settings", UserSettingsController, :edit
@@ -102,6 +101,4 @@ defmodule PentoWeb.Router do
     get "/users/confirm/:token", UserConfirmationController, :edit
     post "/users/confirm/:token", UserConfirmationController, :update
   end
-
-
 end

@@ -10,7 +10,7 @@ products = [
   %{
     name: "Tic-Tac-Toe",
     description: "The game of Xs and Os ",
-    sku: 11_121-314,
+    sku: 11_121 - 314,
     unit_price: 3.00
   },
   %{
