@@ -1,9 +1,10 @@
-
 <section class="row">
   <h2>Survey</h2>
 </section>
 <%=if @demographic do %>
-  <PentoWeb.DemographicLive.Show.details demographic={@demographic} />
+  <DemographicLive.Show.details demographic={@demographic} />
 <%= else %>
-  <h2>Demographic Form coming soon</h2>
+  <.live_component module={DemographicLive.Form}
+    id="demographic_form"
+    user={@current_user} />
 <% end %>

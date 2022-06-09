@@ -1,14 +1,21 @@
 defmodule PentoWeb.SurveyLive do
   use PentoWeb, :live_view
   alias Pento.Survey
+  alias PentoWeb.DemographicLive
 
   def mount(_params, _session, socket) do
+    IO.inspect(socket.assigns.current_user)
+
     {:ok,
      socket
-     |> assign_demographic}
+     |> assign_demographic()}
   end
 
   defp assign_demographic(%{assigns: %{current_user: current_user}} = socket) do
-    assign(socket, :demographic, Survey.get_demographic_by_user(current_user))
+    assign(
+      socket,
+      :demographic,
+      Survey.get_demographic_by_user(current_user)
+    )
   end
 end
