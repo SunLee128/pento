@@ -3,7 +3,7 @@
 </section>
 <%=if @demographic do %>
   <DemographicLive.Show.details demographic={@demographic} />
-  <PentoWeb.RatingLive.Index.products 
+  <RatingLive.Index.products 
     products={@products} 
     current_user={@current_user} 
     demographic={@demographic} />

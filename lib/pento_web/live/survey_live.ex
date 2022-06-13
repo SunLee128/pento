@@ -16,10 +16,24 @@ defmodule PentoWeb.SurveyLive do
     {:noreply, handle_demographic_created(socket, demographic)}
   end
 
+  def handle_info({:created_rating, updated_product, product_index}, socket) do
+    {:noreply, handle_rating_created(socket, updated_product, product_index)}
+  end
+
   def handle_demographic_created(socket, demographic) do
     socket
     |> put_flash(:info, "Demographic created succesfully")
     |> assign(:demographic, demographic)
+  end
+
+  def handle_rating_created(
+        %{assigns: %{products: products}} = socket,
+        updated_product,
+        product_index
+      ) do
+    socket
+    |> put_flash(:info, "Rating submitted succesfully")
+    |> assign(:products, List.replace_at(products, product_index, updated_product))
   end
 
   defp assign_demographic(%{assigns: %{current_user: current_user}} = socket) do
