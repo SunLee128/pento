@@ -7,7 +7,7 @@
     products={@products} 
     current_user={@current_user} 
     demographic={@demographic} />
-<%= else %>
+<% else %>
   <.live_component module={DemographicLive.Form}
     id="demographic_form"
     current_user={@current_user} />
