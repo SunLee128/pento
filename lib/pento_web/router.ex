@@ -98,6 +98,7 @@ defmodule PentoWeb.Router do
   scope "/", PentoWeb do
     pipe_through [:browser]
 
+    live "/game/:puzzle", Pento.GameLive
     delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
